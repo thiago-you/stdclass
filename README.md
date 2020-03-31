@@ -1,5 +1,5 @@
 # Stdclass
-Standard object, adapter and collection for generic uses.
+Standard object, adapter and collections for generic uses.
 
 ### Standard class
     - StdAdapter
