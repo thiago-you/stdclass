@@ -16,12 +16,12 @@ import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings({"unused"})
-public class StdArrayAdapter extends ArrayAdapter<StdObject> {
+public class StdAdapter extends ArrayAdapter<StdObject> {
 
     private Context context;
     private List<StdObject> list;
 
-    public StdArrayAdapter(@NonNull Context context, ArrayList<StdObject> list) {
+    public StdAdapter(@NonNull Context context, ArrayList<StdObject> list) {
         super(context, R.layout.simple_spinner_item_selected);
 
         this.context = context;
