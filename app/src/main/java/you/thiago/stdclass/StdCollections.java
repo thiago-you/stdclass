@@ -1,5 +1,9 @@
 package you.thiago.stdclass;
 
+import android.content.Context;
+
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 
 /**
@@ -10,138 +14,141 @@ public abstract class StdCollections {
 
     public static final Integer NULL_INT_VALUES = -1;
 
-    /**
-     * Retorna a lista de "UF" disponíveis
-     */
-    public static ArrayList<StdObject> getUfList(final boolean withEmptyValue) {
-        return new ArrayList<StdObject>() {{
-            if (withEmptyValue) {
-                add(new StdObject(-1, ""));
+    public static ArrayList<StdObject> getCountryState(final Context context, final boolean withEmptyValue) {
+        ArrayList<StdObject> list = new ArrayList<>();
+
+        if (withEmptyValue) {
+            list.add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
+        }
+
+        return loadList(list, getMap(context, null, R.array.country_states_values, R.array.country_states_extras));
+    }
+
+    public static ArrayList<StdObject> getSkinColor(final Context context) {
+        ArrayList<StdObject> list = new ArrayList<StdObject>() {{
+            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
+        }};
+
+        return loadList(list, getMap(context, R.array.skin_color_keys, R.array.skin_color_values));
+    }
+
+    public static ArrayList<StdObject> getMaritalStatus(final Context context) {
+        ArrayList<StdObject> list = new ArrayList<StdObject>() {{
+            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
+        }};
+
+        return loadList(list, getMap(context, R.array.marital_status_keys, R.array.marital_status_values));
+    }
+
+    public static ArrayList<StdObject> getEducationLevel(final Context context) {
+        ArrayList<StdObject> list = new ArrayList<StdObject>() {{
+            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
+        }};
+
+        return loadList(list, getMap(context, R.array.education_level_values));
+    }
+
+    public static ArrayList<StdObject> getChildrenNumber(final Context context) {
+        ArrayList<StdObject> list = new ArrayList<StdObject>() {{
+            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
+        }};
+
+        return loadList(list, getMap(context, R.array.children_number_values));
+    }
+
+    public static ArrayList<StdObject> getMonthlyIncome(final Context context) {
+        return loadList(new ArrayList<StdObject>(), getMap(context, R.array.monthly_income_keys, R.array.monthly_income_values));
+    }
+
+    public static ArrayList<StdObject> getFuelLevel(final Context context) {
+        return loadList(new ArrayList<StdObject>(), getMap(context, R.array.fuel_level_values));
+    }
+
+    protected static ArrayList<StdObject> loadList(ArrayList<StdObject> list, ArrayList<StdObject> items) {
+        for (StdObject item : items) {
+            if (list.size() == 0) {
+                item.setDefaultValue(true);
             }
 
-            add(new StdObject(0, "Acre").setExtra("AC"));
-            add(new StdObject(1, "Alagoas").setExtra("AL"));
-            add(new StdObject(2, "Amapá").setExtra("AP"));
-            add(new StdObject(3, "Amazonas").setExtra("AM"));
-            add(new StdObject(4, "Bahia").setExtra("BA"));
-            add(new StdObject(5, "Ceará").setExtra("CE"));
-            add(new StdObject(6, "Distrito Federal").setExtra("DF"));
-            add(new StdObject(7, "Espírito Santo").setExtra("ES"));
-            add(new StdObject(8, "Goiás").setExtra("GO"));
-            add(new StdObject(9, "Maranhão").setExtra("MA"));
-            add(new StdObject(10, "Mato Grosso").setExtra("MT"));
-            add(new StdObject(11, "Mato Grosso do Sul").setExtra("MS"));
-            add(new StdObject(12, "Minas Gerais").setExtra("MG"));
-            add(new StdObject(13, "Pará").setExtra("PA"));
-            add(new StdObject(14, "Paraíba").setExtra("PB"));
-            add(new StdObject(15, "Paraná").setExtra("PR"));
-            add(new StdObject(16, "Pernambuco").setExtra("PE"));
-            add(new StdObject(17, "Piauí").setExtra("PI"));
-            add(new StdObject(18, "Rio de Janeiro").setExtra("RJ"));
-            add(new StdObject(19, "Rio Grande do Norte").setExtra("RN"));
-            add(new StdObject(20, "Rio Grande do Sul").setExtra("RS"));
-            add(new StdObject(21, "Rondônia").setExtra("RO"));
-            add(new StdObject(22, "Roraima").setExtra("RR"));
-            add(new StdObject(23, "Santa Catarina").setExtra("SC"));
-            add(new StdObject(24, "São Paulo").setExtra("SP"));
-            add(new StdObject(25, "Sergipe").setExtra("SE"));
-            add(new StdObject(26, "Tocantins").setExtra("TO"));
-        }};
+            list.add(item);
+        }
+
+        return list;
     }
 
-    /**
-     * Retorna a lista de "Cor de Pele" disponíveis
-     */
-    public static ArrayList<StdObject> getCorPeleList() {
-        return new ArrayList<StdObject>() {{
-            add(new StdObject(-1, ""));
-            add(new StdObject(1, "Afro-Brasileiro"));
-            add(new StdObject(2, "Branca"));
-            add(new StdObject(3, "Indígena"));
-            add(new StdObject(4, "Amarela"));
-            add(new StdObject(5, "Parda"));
-        }};
+    protected static ArrayList<StdObject> getMap(String[] values) {
+        ArrayList<StdObject> map = new ArrayList<>();
+
+        for (int i = 0; i < values.length; ++i) {
+            map.add(new StdObject(i, values[i]));
+        }
+
+        return map;
     }
 
-    /**
-     * Retorna a lista de "Estado Cívil" disponíveis
-     */
-    public static ArrayList<StdObject> getEstadoCivilList() {
-        return new ArrayList<StdObject>() {{
-            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
-            add(new StdObject(0, "Solteiro"));
-            add(new StdObject(1, "Casado"));
-            add(new StdObject(2, "Viúvo"));
-            add(new StdObject(3, "Separado Judicialmente"));
-            add(new StdObject(4, "Divorciado"));
-        }};
+    protected static ArrayList<StdObject> getMap(int[] keys, String[] values) {
+        ArrayList<StdObject> map = new ArrayList<>();
+
+        for (int i = 0; i < Math.min(keys.length, values.length); ++i) {
+            map.add(new StdObject(keys[i], values[i]));
+        }
+
+        return map;
     }
 
-    /**
-     * Retorna a lista de "Nível de Escolaridade" disponíveis
-     */
-    public static ArrayList<StdObject> getNivelEscolaridadeList() {
-        return new ArrayList<StdObject>() {{
-            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
-            add(new StdObject(0, "Fundamental Incompleto"));
-            add(new StdObject(1, "Fundamental Completo"));
-            add(new StdObject(2, "Médio Incompleto"));
-            add(new StdObject(3, "Médio Completo"));
-            add(new StdObject(4, "Superior Incompleto"));
-            add(new StdObject(5, "Superior Completo"));
-            add(new StdObject(6, "Pós-Graduação Incompleto"));
-            add(new StdObject(7, "Pós-Graduação Completo"));
-            add(new StdObject(8, "Mestrado Incompleto"));
-            add(new StdObject(9, "Mestrado Completo"));
-            add(new StdObject(10, "Doutorado Incompleto"));
-            add(new StdObject(11, "Doutorado Completo"));
-        }};
+    protected static ArrayList<StdObject> getMap(String[] values, String[] extras) {
+        ArrayList<StdObject> map = new ArrayList<>();
+
+        for (int i = 0; i < Math.min(values.length, extras.length); ++i) {
+            map.add(new StdObject(i, values[i]).setExtra(extras[i]));
+        }
+
+        return map;
     }
 
-    /**
-     * Retorna a lista de "Quantidade de Filhos" disponíveis
-     */
-    public static ArrayList<StdObject> getQuantidadeFilhosList() {
-        return new ArrayList<StdObject>() {{
-            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
-            add(new StdObject(0, "0 Nenhum Filho"));
-            add(new StdObject(1, "1 Filho"));
-            add(new StdObject(2, "2 Filhos"));
-            add(new StdObject(3, "3 Filhos"));
-            add(new StdObject(4, "4 Filhos"));
-            add(new StdObject(5, "5 Filhos"));
-            add(new StdObject(6, "6 Ou Mais Filhos"));
-        }};
+    protected static ArrayList<StdObject> getMap(int[] keys, String[] values, String[] extras) {
+        ArrayList<StdObject> map = new ArrayList<>();
+
+        for (int i = 0; i < Math.min(keys.length, Math.min(values.length, extras.length)); ++i) {
+            map.add(new StdObject(keys[i], values[i]).setExtra(extras[i]));
+        }
+
+        return map;
     }
 
-    /**
-     * Retorna a lista de "Renda Mensal" disponíveis
-     */
-    public static ArrayList<StdObject> getRendaMensalList() {
-        return new ArrayList<StdObject>() {{
-            add(new StdObject(9, "Não Registrado", true));
-            add(new StdObject(0, "Até 1 Salário Mínimo"));
-            add(new StdObject(1, "De 1 a 2 Salário Mínimos"));
-            add(new StdObject(2, "De 2 a 3 Salário Mínimos"));
-            add(new StdObject(3, "De 3 a 5 Salário Mínimos"));
-            add(new StdObject(4, "De 5 a 10 Salário Mínimos"));
-            add(new StdObject(5, "De 10 a 20 Salário Mínimos"));
-            add(new StdObject(6, "Mais de 20 Salário Mínimos"));
-            add(new StdObject(7, "Sem Rendimento"));
-            add(new StdObject(8, "Não Soube Informar"));
-        }};
+    protected static ArrayList<StdObject> getMap(Context context, int valuesRes) {
+        return getMap(context, null, valuesRes, null);
     }
 
-    /**
-     * Retorna a lista de "Marcação do Combustível" disponíveis
-     */
-    public static ArrayList<StdObject> getCombustivelList() {
-        return new ArrayList<StdObject>() {{
-            add(new StdObject(0, "E"));
-            add(new StdObject(1, "1/4"));
-            add(new StdObject(2, "1/2"));
-            add(new StdObject(3, "1/3"));
-            add(new StdObject(4, "C"));
-        }};
+    protected static ArrayList<StdObject> getMap(Context context, int keysRes, int valuesRes) {
+        return getMap(context, keysRes, valuesRes, null);
+    }
+
+    protected static ArrayList<StdObject> getMap(Context context, @Nullable Integer keysRes, @Nullable Integer valuesRes, @Nullable Integer extraRes) {
+        int[] keys = null;
+        String[] values = null;
+        String[] extras = null;
+
+        if (keysRes != null) {
+            keys = context.getResources().getIntArray(keysRes);
+        }
+        if (valuesRes != null) {
+            values = context.getResources().getStringArray(valuesRes);
+        }
+        if (extraRes != null) {
+            extras = context.getResources().getStringArray(extraRes);
+        }
+
+        if (values != null && keys != null && extraRes != null) {
+            return getMap(keys, values, extras);
+        } else if (values != null && keys != null) {
+            return getMap(keys, values);
+        } else if (values != null && extraRes != null) {
+            return getMap(values, extras);
+        } else if (values != null) {
+            return getMap(values);
+        }
+
+        return new ArrayList<>();
     }
 }

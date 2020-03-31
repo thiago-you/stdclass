@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string-array name="skin_color_values">
+        <item>Afro-Brasileiro</item>
+        <item>Branca</item>
+        <item>Indígena</item>
+        <item>Amarela</item>
+        <item>Parda</item>
+    </string-array>
+
+    <integer-array name="skin_color_keys">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </integer-array>
+
+    <string-array name="marital_status_values">
+        <item>Solteiro</item>
+        <item>Casado</item>
+        <item>Viúvo</item>
+        <item>Separado Judicialmente</item>
+        <item>Divorciado</item>
+    </string-array>
+
+    <integer-array name="marital_status_keys">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
+
+    <string-array name="education_level_values">
+        <item>Fundamental Incompleto</item>
+        <item>Fundamental Completo</item>
+        <item>Médio Incompleto</item>
+        <item>Médio Completo</item>
+        <item>Superior Incompleto</item>
+        <item>Superior Completo</item>
+        <item>Pós-Graduação Incompleto</item>
+        <item>Pós-Graduação Completo</item>
+        <item>Mestrado Incompleto</item>
+        <item>Mestrado Completo</item>
+        <item>Doutorado Incompleto</item>
+        <item>Doutorado Completo</item>
+    </string-array>
+
+    <string-array name="children_number_values">
+        <item>0 Nenhum Filho</item>
+        <item>1 Filho</item>
+        <item>2 Filhos</item>
+        <item>3 Filhos</item>
+        <item>4 Filhos</item>
+        <item>5 Filhos</item>
+        <item>6 Ou Mais Filhos</item>
+    </string-array>
+
+    <string-array name="monthly_income_values">
+        <item>Não Registrado</item>
+        <item>Até 1 Salário Mínimo</item>
+        <item>De 1 a 2 Salário Mínimos</item>
+        <item>De 2 a 3 Salário Mínimos</item>
+        <item>De 3 a 5 Salário Mínimos</item>
+        <item>De 5 a 10 Salário Mínimos</item>
+        <item>De 10 a 20 Salário Mínimos</item>
+        <item>Mais de 20 Salário Mínimos</item>
+        <item>Sem Rendimento</item>
+        <item>Não Soube Informar</item>
+    </string-array>
+
+    <integer-array name="monthly_income_keys">
+        <item>9</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </integer-array>
+
+    <string-array name="fuel_level_values" tools:ignore="TypographyFractions">
+        <item>E</item>
+        <item>1/4</item>
+        <item>1/2</item>
+        <item>3/4</item>
+        <item>C</item>
+    </string-array>
+
+    <string-array name="country_states_values">
+        <item>Acre</item>
+        <item>Alagoas</item>
+        <item>Amapá</item>
+        <item>Amazonas</item>
+        <item>Bahia</item>
+        <item>Ceará</item>
+        <item>Distrito Federal</item>
+        <item>Espírito Santo</item>
+        <item>Goiás</item>
+        <item>Maranhão</item>
+        <item>Mato Grosso</item>
+        <item>Mato Grosso do Sul</item>
+        <item>Minas Gerais</item>
+        <item>Pará</item>
+        <item>Paraíba</item>
+        <item>Paraná</item>
+        <item>Pernambuco</item>
+        <item>Piauí</item>
+        <item>Rio de Janeiro</item>
+        <item>Rio Grande do Norte</item>
+        <item>Rio Grande do Sul</item>
+        <item>Rondônia</item>
+        <item>Roraima</item>
+        <item>Santa Catarina</item>
+        <item>São Paulo</item>
+        <item>Sergipe</item>
+        <item>Tocantins</item>
+    </string-array>
+
+    <string-array name="country_states_extras">
+        <item>AC</item>
+        <item>AL</item>
+        <item>AP</item>
+        <item>AM</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>DF</item>
+        <item>ES</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>MT</item>
+        <item>MS</item>
+        <item>MG</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PR</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>RJ</item>
+        <item>RN</item>
+        <item>RS</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>SC</item>
+        <item>SP</item>
+        <item>SE</item>
+        <item>TO</item>
+    </string-array>
+
+</resources>
