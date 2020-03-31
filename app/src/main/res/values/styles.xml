@@ -1,0 +1,25 @@
+<resources>
+
+    <style name="SpinnerItemSelected">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">3dp</item>
+    </style>
+
+    <style name="SpinnerItemDialog" parent="SpinnerItemSelected">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+    </style>
+
+    <style name="SpinnerDialog" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:spinnerMode">dialog</item>
+    </style>
+
+    <style name="SpinnerDropdown" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:spinnerMode">dropdown</item>
+    </style>
+
+</resources>
