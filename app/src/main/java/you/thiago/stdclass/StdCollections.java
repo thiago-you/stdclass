@@ -7,64 +7,29 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 /**
- * ArrayList<StdObject> collections
+ * Generate Standard Collections (ArrayList<StdObject>)
  */
 @SuppressWarnings({"unused", "WeakerAccess"})
 public abstract class StdCollections {
 
     public static final Integer NULL_INT_VALUES = -1;
 
-    public static ArrayList<StdObject> getCountryState(final Context context, final boolean withEmptyValue) {
-        ArrayList<StdObject> list = new ArrayList<>();
-
-        if (withEmptyValue) {
-            list.add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
-        }
-
-        return loadList(list, getMap(context, null, R.array.country_states_values, R.array.country_states_extras));
+    protected static ArrayList<StdObject> loadList(ArrayList<StdObject> items) {
+        return loadList(new ArrayList<StdObject>(), items, false);
     }
 
-    public static ArrayList<StdObject> getSkinColor(final Context context) {
-        ArrayList<StdObject> list = new ArrayList<StdObject>() {{
-            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
-        }};
-
-        return loadList(list, getMap(context, R.array.skin_color_keys, R.array.skin_color_values));
-    }
-
-    public static ArrayList<StdObject> getMaritalStatus(final Context context) {
-        ArrayList<StdObject> list = new ArrayList<StdObject>() {{
-            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
-        }};
-
-        return loadList(list, getMap(context, R.array.marital_status_keys, R.array.marital_status_values));
-    }
-
-    public static ArrayList<StdObject> getEducationLevel(final Context context) {
-        ArrayList<StdObject> list = new ArrayList<StdObject>() {{
-            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
-        }};
-
-        return loadList(list, getMap(context, R.array.education_level_values));
-    }
-
-    public static ArrayList<StdObject> getChildrenNumber(final Context context) {
-        ArrayList<StdObject> list = new ArrayList<StdObject>() {{
-            add(new StdObject(StdCollections.NULL_INT_VALUES, "", true));
-        }};
-
-        return loadList(list, getMap(context, R.array.children_number_values));
-    }
-
-    public static ArrayList<StdObject> getMonthlyIncome(final Context context) {
-        return loadList(new ArrayList<StdObject>(), getMap(context, R.array.monthly_income_keys, R.array.monthly_income_values));
-    }
-
-    public static ArrayList<StdObject> getFuelLevel(final Context context) {
-        return loadList(new ArrayList<StdObject>(), getMap(context, R.array.fuel_level_values));
+    protected static ArrayList<StdObject> loadList(ArrayList<StdObject> items, boolean useEmptyDefaultValue) {
+        return loadList(new ArrayList<StdObject>(), items, useEmptyDefaultValue);
     }
 
     protected static ArrayList<StdObject> loadList(ArrayList<StdObject> list, ArrayList<StdObject> items) {
+        return loadList(list, items, false);
+    }
+    protected static ArrayList<StdObject> loadList(ArrayList<StdObject> list, ArrayList<StdObject> items, boolean useEmptyDefaultValue) {
+        if (useEmptyDefaultValue) {
+            list.add(0, new StdObject(NULL_INT_VALUES, "", true));
+        }
+
         for (StdObject item : items) {
             if (list.size() == 0) {
                 item.setDefaultValue(true);
