@@ -25,6 +25,7 @@ public abstract class StdCollections {
     protected static ArrayList<StdObject> loadList(ArrayList<StdObject> list, ArrayList<StdObject> items) {
         return loadList(list, items, false);
     }
+
     protected static ArrayList<StdObject> loadList(ArrayList<StdObject> list, ArrayList<StdObject> items, boolean useEmptyDefaultValue) {
         if (useEmptyDefaultValue) {
             list.add(0, new StdObject(NULL_INT_VALUES, "", true));
