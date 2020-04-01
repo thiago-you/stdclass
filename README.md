@@ -5,9 +5,21 @@ Standard object, adapter and collections for generic uses.
     - StdAdapter
     - StdCollections
     - StdObject
+    - Collections
+        - BaseCollection
 
 ### Requirements
     Min SDK Version >= 19
+
+### Extending collections
+StdCollections and BaseCollection can be easily extended do add new lists. List values can be set on collections.xml (or any other xml resource file), can also use specific translations to get a dynamic list.
+
+Collections can use tree array types:
+    - Integer keys => collections keys (if not set, use default iteration count)
+    - String values => collections values (required)
+    - String extras => collection extra value (can be used for multiple purposes inside StdAdapter)
+
+Collections arrays must have the exact same size, otherwise it will be iterate over the smallest. Into collections.xml arrays is commonly defined as "name"_keys, "name"_values and "name"_extras.
 
 ### Import library from Jitpack
     - Add Jitpack repository into you project (build.gradle):
