@@ -15,6 +15,7 @@ Standard object, adapter and collections for generic uses.
 StdCollections and BaseCollection can be easily extended do add new lists. List values can be set on collections.xml (or any other xml resource file), can also use specific translations to get a dynamic list.
 
 Collections can use tree array types:
+
     - Integer keys => collections keys (if not set, use default iteration count)
     - String values => collections values (required)
     - String extras => collection extra value (can be used for multiple purposes inside StdAdapter)
