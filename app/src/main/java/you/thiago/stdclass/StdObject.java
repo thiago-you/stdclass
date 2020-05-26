@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
-public class StdObject implements Parcelable {
+public class StdObject implements Parcelable, IStdObject {
 
     private int id;
     private String name;
@@ -22,6 +22,7 @@ public class StdObject implements Parcelable {
         this.defaultValue = defaultValue;
     }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -30,6 +31,7 @@ public class StdObject implements Parcelable {
         this.id = id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -38,14 +40,17 @@ public class StdObject implements Parcelable {
         this.name = name;
     }
 
+    @Override
     public boolean isDefaultValue() {
         return defaultValue;
     }
 
+    @Override
     public void setDefaultValue(boolean defaultValue) {
         this.defaultValue = defaultValue;
     }
 
+    @Override
     public String getExtra() {
         return extra;
     }

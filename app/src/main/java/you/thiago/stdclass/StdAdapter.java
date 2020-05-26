@@ -16,22 +16,18 @@ import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings({"unused"})
-public class StdAdapter extends ArrayAdapter<StdObject> {
+public class StdAdapter extends ArrayAdapter<IStdObject> {
 
     private Context context;
-    private List<StdObject> list;
+    private ArrayList<? extends IStdObject> list;
 
-    public StdAdapter(@NonNull Context context, ArrayList<StdObject> list) {
+    public StdAdapter(@NonNull Context context, ArrayList<? extends IStdObject> list) {
         super(context, R.layout.simple_spinner_item_selected);
 
         this.context = context;
         this.list = list;
 
         setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    }
-
-    public void setList(List<StdObject> list) {
-        this.list = list;
     }
 
     @Override
@@ -41,7 +37,7 @@ public class StdAdapter extends ArrayAdapter<StdObject> {
 
     @NonNull
     @Override
-    public StdObject getItem(int position) {
+    public IStdObject getItem(int position) {
         return list.get(position);
     }
 
@@ -57,7 +53,7 @@ public class StdAdapter extends ArrayAdapter<StdObject> {
     }
 
     public int getPositionById(int id) {
-        for (StdObject item : list) {
+        for (IStdObject item : list) {
             if (item.getId() == id) {
                 return list.indexOf(item);
             }
@@ -67,7 +63,7 @@ public class StdAdapter extends ArrayAdapter<StdObject> {
     }
 
     public int getPositionByName(String name) {
-        for (StdObject item : list) {
+        for (IStdObject item : list) {
             if (item.getName().equals(name)) {
                 return list.indexOf(item);
             }
@@ -77,7 +73,7 @@ public class StdAdapter extends ArrayAdapter<StdObject> {
     }
 
     public int getPositionByExtra(String extra) {
-        for (StdObject item : list) {
+        for (IStdObject item : list) {
             if (item.getExtra() != null && item.getExtra().equals(extra)) {
                 return list.indexOf(item);
             }
@@ -87,7 +83,7 @@ public class StdAdapter extends ArrayAdapter<StdObject> {
     }
 
     public int getDefaultPosition() {
-        for (StdObject item : list) {
+        for (IStdObject item : list) {
             if (item.isDefaultValue()) {
                 return list.indexOf(item);
             }
@@ -118,7 +114,7 @@ public class StdAdapter extends ArrayAdapter<StdObject> {
         return loadViewData(view, list.get(position));
     }
 
-    private View loadViewData(View view, StdObject item) {
+    private View loadViewData(View view, IStdObject item) {
         TextView txtInfo = view.findViewById(R.id.txtSpinnerItem);
         txtInfo.setText(item.getName());
 

@@ -1,12 +1,13 @@
 # Stdclass
 Standard object, adapter and collections for generic uses.
 
-### Standard class
+### Standard Class
+    - IStdObject
     - StdAdapter
     - StdCollections
     - StdObject
-    - Collections
-        - BaseCollection
+    - enums
+        - BaseStdCollections
 
 ### Requirements
     Min SDK Version >= 19
@@ -21,6 +22,9 @@ Collections can use tree array types:
     - String extras => collection extra value (can be used for multiple purposes inside StdAdapter)
 
 Collections arrays must have the exact same size, otherwise it will be iterate over the smallest. Into collections.xml arrays is commonly defined as "name"_keys, "name"_values and "name"_extras.
+
+### Custom StdObject
+Is possible to create your own StdObject implementing IStdObject contract.
 
 ### Import library from Jitpack
     - Add Jitpack repository into you project (build.gradle):
