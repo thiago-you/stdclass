@@ -7,6 +7,8 @@
         <item>Indígena</item>
         <item>Amarela</item>
         <item>Parda</item>
+        <item>Albina</item>
+        <item>Ignorada</item>
     </string-array>
 
     <integer-array name="skin_color_keys">
@@ -15,6 +17,8 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </integer-array>
 
     <string-array name="marital_status_values">
@@ -33,6 +37,56 @@
         <item>4</item>
     </integer-array>
 
+    <string-array name="sex_identity_values">
+        <item>Ignorado</item>
+        <item>Feminino</item>
+        <item>Masculino</item>
+    </string-array>
+
+    <string-array name="sex_identity_extras">
+        <item>I</item>
+        <item>F</item>
+        <item>M</item>
+    </string-array>
+
+    <string-array name="sexual_orientation_values">
+        <item>Não Apurado</item>
+        <item>Heterossexual</item>
+        <item>Homossexual</item>
+        <item>Bissexual</item>
+        <item>Assexual</item>
+        <item>Pansexual</item>
+    </string-array>
+
+    <integer-array name="sexual_orientation_keys">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </integer-array>
+
+    <string-array name="sex_gender_values">
+        <item>Não Apurado</item>
+        <item>Mulher Cisgênero</item>
+        <item>Homem Cisgênero</item>
+        <item>Mulher Transgênero</item>
+        <item>Homem  Transgênero</item>
+        <item>Gênero Não-Binário</item>
+        <item>Agênero</item>
+    </string-array>
+
+    <integer-array name="sex_gender_keys">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
+
     <string-array name="education_level_values">
         <item>Fundamental Incompleto</item>
         <item>Fundamental Completo</item>
@@ -49,7 +103,7 @@
     </string-array>
 
     <string-array name="children_number_values">
-        <item>0 Nenhum Filho</item>
+        <item>Nenhum Filho</item>
         <item>1 Filho</item>
         <item>2 Filhos</item>
         <item>3 Filhos</item>
@@ -150,6 +204,24 @@
         <item>SP</item>
         <item>SE</item>
         <item>TO</item>
+    </string-array>
+
+    <string-array name="fuel_type_values">
+        <item>Gasolina</item>
+        <item>Etanol</item>
+        <item>Diesel</item>
+        <item>Biodisel</item>
+        <item>Gás Natural</item>
+        <item>Elétrico</item>
+    </string-array>
+
+    <string-array name="fuel_type_extras">
+        <item>G</item>
+        <item>ETN</item>
+        <item>D</item>
+        <item>B</item>
+        <item>GNV</item>
+        <item>ELT</item>
     </string-array>
 
 </resources>

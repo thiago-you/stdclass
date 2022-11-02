@@ -3,7 +3,7 @@
     <style name="SpinnerItemSelected">
         <item name="android:textAlignment">textStart</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColor">@color/text</item>
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">3dp</item>
     </style>

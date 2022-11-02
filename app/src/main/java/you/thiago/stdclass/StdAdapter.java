@@ -1,6 +1,7 @@
 package you.thiago.stdclass;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,26 +9,49 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings({"unused"})
 public class StdAdapter extends ArrayAdapter<IStdObject> {
 
-    private Context context;
-    private ArrayList<? extends IStdObject> list;
+    protected Context context;
+    protected ArrayList<? extends IStdObject> list;
+
+    @LayoutRes
+    private final int layoutRes;
+
+    @LayoutRes
+    private int spinnerItemSelectedRes = R.layout.simple_spinner_item_selected;
+
+    @LayoutRes
+    private int spinnerItemRes = R.layout.simple_spinner_item_dialog;
+
+    @LayoutRes
+    private int spinnerDropdownRes = android.R.layout.simple_spinner_dropdown_item;
+
+    public StdAdapter(@NonNull Context context, @LayoutRes int resource, ArrayList<? extends IStdObject> list) {
+        super(context, resource);
+
+        this.list = list;
+        this.context = context;
+        this.layoutRes = resource;
+
+        setDropDownViewResource(spinnerDropdownRes);
+    }
 
     public StdAdapter(@NonNull Context context, ArrayList<? extends IStdObject> list) {
         super(context, R.layout.simple_spinner_item_selected);
 
-        this.context = context;
         this.list = list;
+        this.context = context;
+        this.layoutRes = spinnerItemSelectedRes;
 
-        setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        setDropDownViewResource(spinnerDropdownRes);
     }
 
     @Override
@@ -35,15 +59,19 @@ public class StdAdapter extends ArrayAdapter<IStdObject> {
         return list.size();
     }
 
-    @NonNull
+    @Nullable
     @Override
     public IStdObject getItem(int position) {
-        return list.get(position);
+        if (position > -1 && position < list.size()) {
+            return list.get(position);
+        }
+
+        return null;
     }
 
     @Override
     public long getItemId(int position) {
-        if (position > -1) {
+        if (position > -1 && position < list.size()) {
             if (list.get(position) != null) {
                 return list.get(position).getId();
             }
@@ -95,7 +123,7 @@ public class StdAdapter extends ArrayAdapter<IStdObject> {
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = Objects.requireNonNull(inflater).inflate(R.layout.simple_spinner_item_dialog, parent, false);
+        View view = Objects.requireNonNull(inflater).inflate(spinnerItemRes, parent, false);
 
         return loadViewData(view, list.get(position));
     }
@@ -109,7 +137,7 @@ public class StdAdapter extends ArrayAdapter<IStdObject> {
     @NonNull
     private View getView(int position, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = Objects.requireNonNull(inflater).inflate(R.layout.simple_spinner_item_selected, parent, false);
+        View view = Objects.requireNonNull(inflater).inflate(layoutRes, parent, false);
 
         return loadViewData(view, list.get(position));
     }
@@ -124,12 +152,26 @@ public class StdAdapter extends ArrayAdapter<IStdObject> {
     public void setError(@NonNull Spinner spinner, String error) {
         if (spinner.getSelectedView() != null) {
             TextView item = spinner.getSelectedView().findViewById(R.id.txtSpinnerItem);
-
-            if (error == null) {
-                item.setError(null);
-            } else {
-                item.setError(error);
-            }
+            item.setError(error);
         }
+    }
+
+    public void setError(@NonNull Spinner spinner, String error, Drawable icon) {
+        if (spinner.getSelectedView() != null) {
+            TextView item = spinner.getSelectedView().findViewById(R.id.txtSpinnerItem);
+            item.setError(error, icon);
+        }
+    }
+
+    public void setSpinnerItemSelectedRes(@LayoutRes int spinnerItemSelectedRes) {
+        this.spinnerItemSelectedRes = spinnerItemSelectedRes;
+    }
+
+    public void setSpinnerDropdownRes(@LayoutRes int spinnerDropdownRes) {
+        this.spinnerDropdownRes = spinnerDropdownRes;
+    }
+
+    public void setSpinnerItemRes(@LayoutRes int spinnerItemRes) {
+        this.spinnerItemRes = spinnerItemRes;
     }
 }

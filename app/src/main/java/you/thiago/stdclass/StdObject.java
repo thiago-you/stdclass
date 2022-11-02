@@ -3,6 +3,8 @@ package you.thiago.stdclass;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class StdObject implements Parcelable, IStdObject {
 
@@ -60,6 +62,12 @@ public class StdObject implements Parcelable, IStdObject {
         return this;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -80,7 +88,7 @@ public class StdObject implements Parcelable, IStdObject {
         defaultValue = in.readByte() != 0;
     }
 
-    public static final Creator<StdObject> CREATOR = new Creator<StdObject>() {
+    public static final Creator<StdObject> CREATOR = new Creator<>() {
         @Override
         public StdObject createFromParcel(Parcel in) {
             return new StdObject(in);

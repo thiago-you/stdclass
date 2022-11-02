@@ -15,11 +15,11 @@ public abstract class StdCollections {
     public static final Integer NULL_INT_VALUES = -1;
 
     protected static ArrayList<IStdObject> loadList(ArrayList<IStdObject> items) {
-        return loadList(new ArrayList<IStdObject>(), items, false);
+        return loadList(new ArrayList<>(), items, false);
     }
 
     protected static ArrayList<IStdObject> loadList(ArrayList<IStdObject> items, boolean useEmptyDefaultValue) {
-        return loadList(new ArrayList<IStdObject>(), items, useEmptyDefaultValue);
+        return loadList(new ArrayList<>(), items, useEmptyDefaultValue);
     }
 
     protected static ArrayList<IStdObject> loadList(ArrayList<IStdObject> list, ArrayList<IStdObject> items) {

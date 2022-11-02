@@ -26,6 +26,18 @@ public abstract class BaseStdCollections extends StdCollections {
         return loadList(getMap(context, R.array.marital_status_keys, R.array.marital_status_values), true);
     }
 
+    public static ArrayList<IStdObject> getSexIdentity(final Context context) {
+        return loadList(getMap(context, null, R.array.sex_identity_values, R.array.sex_identity_extras));
+    }
+
+    public static ArrayList<IStdObject> getSexualOrientation(final Context context) {
+        return loadList(getMap(context, R.array.sexual_orientation_keys, R.array.sexual_orientation_values), false);
+    }
+
+    public static ArrayList<IStdObject> getSexGender(final Context context) {
+        return loadList(getMap(context, R.array.sex_gender_keys, R.array.sex_gender_values), false);
+    }
+
     public static ArrayList<IStdObject> getEducationLevel(final Context context) {
         return loadList(getMap(context, R.array.education_level_values), true);
     }
@@ -40,5 +52,9 @@ public abstract class BaseStdCollections extends StdCollections {
 
     public static ArrayList<IStdObject> getFuelLevel(final Context context) {
         return loadList(getMap(context, R.array.fuel_level_values));
+    }
+
+    public static ArrayList<IStdObject> getFuelType(final Context context) {
+        return loadList(getMap(context, null, R.array.fuel_type_values, R.array.fuel_type_extras), true);
     }
 }
